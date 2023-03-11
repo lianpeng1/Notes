@@ -261,16 +261,123 @@ pre[data-line] .line-highlight[data-end]:after {
     </head>
     <body for="html-export">
       <div class="mume markdown-preview  ">
-      <h3 class="mume-header" id="ch2-variables-and-basic-types">ch2 Variables and Basic Types</h3>
+      <h2 class="mume-header" id="chapter-2-variables-and-basic-types">Chapter 2. Variables and Basic Types</h2>
 
-<h3 class="mume-header" id="ch8-io-library">ch8 IO Library</h3>
+<h3 class="mume-header" id="%E5%9F%BA%E6%9C%AC%E5%86%85%E7%BD%AE%E7%B1%BB%E5%9E%8B">&#x57FA;&#x672C;&#x5185;&#x7F6E;&#x7C7B;&#x578B;</h3>
+
+<p><strong>&#x57FA;&#x672C;&#x7B97;&#x6570;&#x7C7B;&#x578B;</strong>&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th>&#x7C7B;&#x578B;</th>
+<th>&#x542B;&#x4E49;</th>
+<th>&#x6700;&#x5C0F;&#x5C3A;&#x5BF8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bool</code></td>
+<td>&#x5E03;&#x5C14;&#x7C7B;&#x578B;</td>
+<td>8bits</td>
+</tr>
+<tr>
+<td><code>char</code></td>
+<td>&#x5B57;&#x7B26;</td>
+<td>8bits</td>
+</tr>
+<tr>
+<td><code>wchar_t</code></td>
+<td>&#x5BBD;&#x5B57;&#x7B26;</td>
+<td>16bits</td>
+</tr>
+<tr>
+<td><code>char16_t</code></td>
+<td>Unicode&#x5B57;&#x7B26;</td>
+<td>16bits</td>
+</tr>
+<tr>
+<td><code>char32_t</code></td>
+<td>Unicode&#x5B57;&#x7B26;</td>
+<td>32bits</td>
+</tr>
+<tr>
+<td><code>short</code></td>
+<td>&#x77ED;&#x6574;&#x578B;</td>
+<td>16bits</td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td>&#x6574;&#x578B;</td>
+<td>16bits (&#x5728;32&#x4F4D;&#x673A;&#x5668;&#x4E2D;&#x662F;32bits)</td>
+</tr>
+<tr>
+<td><code>long</code></td>
+<td>&#x957F;&#x6574;&#x578B;</td>
+<td>32bits</td>
+</tr>
+<tr>
+<td><code>long long</code></td>
+<td>&#x957F;&#x6574;&#x578B;</td>
+<td>64bits &#xFF08;&#x662F;&#x5728;C++11&#x4E2D;&#x65B0;&#x5B9A;&#x4E49;&#x7684;&#xFF09;</td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td>&#x5355;&#x7CBE;&#x5EA6;&#x6D6E;&#x70B9;&#x6570;</td>
+<td>6&#x4F4D;&#x6709;&#x6548;&#x6570;&#x5B57;</td>
+</tr>
+<tr>
+<td><code>double</code></td>
+<td>&#x53CC;&#x7CBE;&#x5EA6;&#x6D6E;&#x70B9;&#x6570;</td>
+<td>10&#x4F4D;&#x6709;&#x6548;&#x6570;&#x5B57;</td>
+</tr>
+<tr>
+<td><code>long double</code></td>
+<td>&#x6269;&#x5C55;&#x7CBE;&#x5EA6;&#x6D6E;&#x70B9;&#x6570;</td>
+<td>10&#x4F4D;&#x6709;&#x6548;&#x6570;&#x5B57;</td>
+</tr>
+</tbody>
+</table>
+<h3 class="mume-header" id="%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%E7%B1%BB%E5%9E%8B">&#x5982;&#x4F55;&#x9009;&#x62E9;&#x7C7B;&#x578B;</h3>
+
+<ul>
+<li>&#x5F53;&#x6570;&#x503C;&#x4E0D;&#x53EF;&#x80FD;&#x4E3A;&#x8D1F;&#x6570;&#x65F6;&#xFF0C;&#x9009;&#x62E9;&#x65E0;&#x7B26;&#x53F7;&#x7C7B;&#x578B;</li>
+<li>&#x4F7F;&#x7528;<code>int</code>&#x6267;&#x884C;&#x6574;&#x6570;&#x8FD0;&#x7B97;&#x3002;&#x4E00;&#x822C;<code>long</code>&#x7684;&#x5927;&#x5C0F;&#x548C;<code>int</code>&#x4E00;&#x6837;&#xFF0C;&#x800C;<code>short</code>&#x592A;&#x5C0F;&#x3002;&#x5982;&#x679C;&#x8D85;&#x8FC7;&#x4E86;<code>int</code>&#x7684;&#x8303;&#x56F4;&#xFF0C;&#x5219;&#x9009;&#x62E9;<code>long long</code></li>
+<li>&#x7B97;&#x672F;&#x8868;&#x8FBE;&#x5F0F;&#x4E2D;&#x4E0D;&#x8981;&#x4F7F;&#x7528;<code>char</code>&#x6216;<code>bool</code></li>
+<li>&#x6D6E;&#x70B9;&#x8FD0;&#x7B97;&#x4F7F;&#x7528;<code>double</code>&#x3002;<code>float</code>&#x7CBE;&#x5EA6;&#x4E0D;&#x591F;</li>
+</ul>
+<h3 class="mume-header" id="%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2">&#x7C7B;&#x578B;&#x8F6C;&#x6362;</h3>
+
+<ul>
+<li>&#x975E;&#x5E03;&#x5C14;&#x578B;&#x8D4B;&#x7ED9;&#x5E03;&#x5C14;&#x578B;&#xFF0C;&#x521D;&#x59CB;&#x503C;&#x4E3A;0&#x5219;&#x7ED3;&#x679C;&#x4E3A;false&#xFF0C;&#x5426;&#x5219;&#x4E3A;true&#x3002;</li>
+<li>&#x5E03;&#x5C14;&#x578B;&#x8D4B;&#x7ED9;&#x975E;&#x5E03;&#x5C14;&#x578B;&#xFF0C;&#x521D;&#x59CB;&#x503C;&#x4E3A;false&#x7ED3;&#x679C;&#x4E3A;0&#xFF0C;&#x521D;&#x59CB;&#x503C;&#x4E3A;true&#x7ED3;&#x679C;&#x4E3A;1&#x3002;</li>
+</ul>
+<h2 class="mume-header" id="chapter-7-classes">Chapter 7. Classes</h2>
+
+<h3 class="mume-header" id="%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">&#x62BD;&#x8C61;&#x6570;&#x636E;&#x7C7B;&#x578B;</h3>
+
+<ul>
+<li>&#x7C7B;&#x80CC;&#x540E;&#x7684;&#x57FA;&#x672C;&#x601D;&#x60F3;&#xFF1A;<strong>data abstraction</strong> and <strong>encapsulation</strong></li>
+</ul>
+<h4 class="mume-header" id="%E7%B1%BB%E6%88%90%E5%91%98">&#x7C7B;&#x6210;&#x5458;</h4>
+
+<h4 class="mume-header" id="%E7%B1%BB%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0">&#x7C7B;&#x6210;&#x5458;&#x51FD;&#x6570;</h4>
+
+<h4 class="mume-header" id="%E9%9D%9E%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0">&#x975E;&#x6210;&#x5458;&#x51FD;&#x6570;</h4>
+
+<h4 class="mume-header" id="%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0">&#x6784;&#x9020;&#x51FD;&#x6570;</h4>
+
+<ul>
+<li>&#x4E0E;&#x7C7B;&#x540C;&#x540D;&#x7684;&#x6210;&#x5458;&#x51FD;&#x6570;&#x3002;</li>
+<li>&#x6784;&#x9020;&#x51FD;&#x6570;&#x653E;&#x5728;&#x7C7B;&#x7684;<code>public</code>&#x90E8;&#x5206;&#x3002;</li>
+</ul>
+<h2 class="mume-header" id="chapter-8-io-library">Chapter 8. IO Library</h2>
 
 <ul>
 <li><strong>cin</strong>&#xFF1A;&#x4E00;&#x4E2A;<code>istream</code>&#x5BF9;&#x8C61;&#xFF0C;&#x4ECE;&#x6807;&#x51C6;&#x8F93;&#x5165;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x3002;</li>
 <li><strong>cout</strong>&#xFF1A;&#x4E00;&#x4E2A;<code>ostream</code>&#x5BF9;&#x8C61;&#xFF0C;&#x5411;&#x6807;&#x51C6;&#x8F93;&#x51FA;&#x5199;&#x5165;&#x6570;&#x636E;&#x3002;</li>
 <li><strong>cerr</strong>&#xFF1A;&#x4E00;&#x4E2A;<code>ostream</code>&#x5BF9;&#x8C61;&#xFF0C;&#x5411;&#x6807;&#x51C6;&#x9519;&#x8BEF;&#x5199;&#x5165;&#x6D88;&#x606F;&#x3002;</li>
 </ul>
-<h4 class="mume-header" id="io-%E7%B1%BB">IO &#x7C7B;</h4>
+<h3 class="mume-header" id="io-%E7%B1%BB">IO &#x7C7B;</h3>
 
 <table>
 <thead>
@@ -286,17 +393,70 @@ pre[data-line] .line-highlight[data-end]:after {
 </tr>
 </tbody>
 </table>
+<h2 class="mume-header" id="chapter-12-dynamic-memory">Chapter 12. Dynamic Memory</h2>
+
 
       </div>
       <div class="md-sidebar-toc">
 <div class="md-toc">
-<div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
-          <a href="#ch2-variables-and-basic-types" class="md-toc-link">
-            <p>ch2 Variables and Basic Types</p>
-
-          </a></div><details style="padding:0;;padding-left:0px;" open>
+<details style="padding:0;;padding-left:0px;" open>
         <summary class="md-toc-link-wrapper">
-          <a href="#ch8-io-library" class="md-toc-link"><p>ch8 IO Library</p>
+          <a href="#chapter-2-variables-and-basic-types" class="md-toc-link"><p>Chapter 2. Variables and Basic Types</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#&#x57FA;&#x672C;&#x5185;&#x7F6E;&#x7C7B;&#x578B;" class="md-toc-link">
+            <p>&#x57FA;&#x672C;&#x5185;&#x7F6E;&#x7C7B;&#x578B;</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#&#x5982;&#x4F55;&#x9009;&#x62E9;&#x7C7B;&#x578B;" class="md-toc-link">
+            <p>&#x5982;&#x4F55;&#x9009;&#x62E9;&#x7C7B;&#x578B;</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#&#x7C7B;&#x578B;&#x8F6C;&#x6362;" class="md-toc-link">
+            <p>&#x7C7B;&#x578B;&#x8F6C;&#x6362;</p>
+
+          </a></div>
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:0px;" open>
+        <summary class="md-toc-link-wrapper">
+          <a href="#chapter-7-classes" class="md-toc-link"><p>Chapter 7. Classes</p>
+</a>
+          </summary>
+        <div>
+          <details style="padding:0;;padding-left:24px;" open>
+        <summary class="md-toc-link-wrapper">
+          <a href="#&#x62BD;&#x8C61;&#x6570;&#x636E;&#x7C7B;&#x578B;" class="md-toc-link"><p>&#x62BD;&#x8C61;&#x6570;&#x636E;&#x7C7B;&#x578B;</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#&#x7C7B;&#x6210;&#x5458;" class="md-toc-link">
+            <p>&#x7C7B;&#x6210;&#x5458;</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#&#x7C7B;&#x6210;&#x5458;&#x51FD;&#x6570;" class="md-toc-link">
+            <p>&#x7C7B;&#x6210;&#x5458;&#x51FD;&#x6570;</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#&#x975E;&#x6210;&#x5458;&#x51FD;&#x6570;" class="md-toc-link">
+            <p>&#x975E;&#x6210;&#x5458;&#x51FD;&#x6570;</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#&#x6784;&#x9020;&#x51FD;&#x6570;" class="md-toc-link">
+            <p>&#x6784;&#x9020;&#x51FD;&#x6570;</p>
+
+          </a></div>
+        </div>
+      </details>
+    
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:0px;" open>
+        <summary class="md-toc-link-wrapper">
+          <a href="#chapter-8-io-library" class="md-toc-link"><p>Chapter 8. IO Library</p>
 </a>
           </summary>
         <div>
@@ -307,7 +467,11 @@ pre[data-line] .line-highlight[data-end]:after {
           </a></div>
         </div>
       </details>
-    
+    <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#chapter-12-dynamic-memory" class="md-toc-link">
+            <p>Chapter 12. Dynamic Memory</p>
+
+          </a></div>
 </div>
 </div>
       <a id="sidebar-toc-btn">&#x2261;</a>
