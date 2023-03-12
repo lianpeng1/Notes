@@ -69,7 +69,8 @@ export_on_save:
   - **堆内存**，又称自由空间，用来存储**动态分配**的对象。
 
 ### 动态内存和智能指针
-动态内存管理 `new`  and  `delete`
+
+#### `shared_ptr`
 
 **`shared_ptr` and `unique_ptr` 都支持的操作**:
 
@@ -93,9 +94,62 @@ export_on_save:
 | `p.use_count()` | 返回与`p`共享对象的智能指针数量；可能很慢，主要用于调试。 |
 
 **`shared_ptr` reference count**
+- counter+1：
+  - copy. use `shared_ptr` as the right-hand operand of an assignment.
+  - pass `shared_ptr` to or return it from a function bt value.
+- counter-1：
+  - assign a new value to the `shared_ptr`.
+  - a local `shared_ptr` goes out of scope.
+
+当`shared_ptr`的引用计数为0时，`shared_ptr` destructor 销毁`shared_ptr`指向的对象并且释放对象使用的内存。
+
 
 
 **使用动态内存的三种原因**：
 - 程序不知道自己需要使用多少对象（比如容器类）。
 - 程序不知道所需要对象的准确类型。
 - 程序需要在多个对象间共享数据。
+
+#### 直接管理内存
+- 用`new`动态分配和初始化对象
+  - `new`无法为分配的对象命名（因为自由空间分配的内存是无名的），因此是返回一个指向该对象的指针
+  - `int *pi = new int(123)`
+  - `auto p = new auto(obj)`(c++11)
+  - 一旦内存耗尽，会抛出类型是`bad_alloc`的异常。
+- 用`delete`释放动态内存
+  - 只能`delete`动态分配的内存或空指针
+  - `delete`后的指针称为空悬指针(dangling pointer)，delete指针后要置空
+- 使用`new`和`delete`管理动态内存存在三个常见问题：
+  - 忘记`delete`内存
+  - 使用已经释放掉的对象
+  - 同一块内存释放两次
+
+#### 使用 `shared_ptr` with `new`
+**定义和改变`shared_ptr`的其他方法**：
+| 操作 | 解释 |
+|-----|-----|
+| `shared_ptr<T> p(q)` | `p`管理内置指针`q`所指向的对象；`q`必须指向`new`分配的内存，且能够转换为`T*`类型 |
+| `shared_ptr<T> p(u)` | `p`从`unique_ptr u`那里接管了对象的所有权；将`u`置为空 |
+| `shared_ptr<T> p(q, d)` | `p`接管了内置指针`q`所指向的对象的所有权。`q`必须能转换为`T*`类型。`p`将使用可调用对象`d`来代替`delete`。 |
+| `shared_ptr<T> p(p2, d)` | `p`是`shared_ptr p2`的拷贝，唯一的区别是`p`将可调用对象`d`来代替`delete`。 |
+| `p.reset()`<br>`p.reset(q)` <br>`p.reset(q, d)` | 若`p`是唯一指向其对象的`shared_ptr`，`reset`会释放此对象。若传递了可选的参数内置指针`q`，会令`p`指向`q`，否则会将`p`置空。若还传递了参数`d`，则会调用`d`而不是`delete`来释放`q`。 |
+
+- `ok` : `shared_ptr<int> p1(new int(1024))`
+- `error` : `shared_ptr<int> p1 = new int(1024)`
+- `ok` :  &#10003;
+```c++
+    shared_ptr<int> clone(int p) {
+      // ok: explicitly create a shared_ptr<int> from int*
+      return shared_ptr<int>(new int(p)); 
+    }
+```
+- `error` :  &#10005;
+```c++
+    shared_ptr<int> clone(int p) {
+      // error: implicit conversion to shared_ptr<int>
+      return new int(p);
+    }
+```
+- **不要使用内置指针去访问智能指针所拥有的对象， 因为不知道什么时候对象会被销毁**
+  
+798页
